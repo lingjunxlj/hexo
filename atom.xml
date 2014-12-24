@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[熊窝]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://bearwo.com/"/>
+  <updated>2014-12-24T04:45:34.720Z</updated>
+  <id>http://bearwo.com/</id>
+  
+  <author>
+    <name><![CDATA[lingjun.xiong]]></name>
+    <email><![CDATA[lingjunxlj@gmail.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Hexo 远程发布]]></title>
+    <link href="http://bearwo.com/2014/12/24/hexo%E8%BF%9C%E7%A8%8B%E5%8F%91%E5%B8%83/"/>
+    <id>http://bearwo.com/2014/12/24/hexo远程发布/</id>
+    <published>2014-12-24T02:53:36.000Z</published>
+    <updated>2014-12-19T10:32:21.000Z</updated>
+    <content type="html"><![CDATA[<p>现在一直在用MarkDown写东西。发现Hexo发布很麻烦，想办法改了下。</p>
+<p>使用Github可以参照<a href="http://wzpan.gitcafe.com/tools/koding_intro/" target="_blank" rel="external">利用 Koding 为静态博客搭建在线编辑环境</a></p>
+<p>我用的是<a href="https://www.linode.com/" target="_blank" rel="external">Linode</a>，只能换种方式了。<br>首先你需要个梯子。如果不考虑在线书写的话，Dropbox就可以满足需要了。</p>
+<p>在线：</p>
+<ul>
+<li>推荐<a href="https://stackedit.io/" target="_blank" rel="external">StackEdit</a>，支持网盘。</li>
+<li>使用<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">incron</a> 或者 <a href="https://github.com/rvoicilas/inotify-tools/wiki" target="_blank" rel="external">inotify-tool</a>，让文件改变时执行脚本。</li>
+</ul>
+<h4 id="inotify-tool">inotify-tool</h4>
+<p>安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-<span class="keyword">get</span> install inotify-tools</div></pre></td></tr></table></figure>
+
+<p>配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#!/bin/sh</span></div><div class="line"><span class="comment">#nohup /bin/bash /root/stackEdit.sh &gt; /dev/null 2&gt;&1 &</span></div><div class="line">  </div><div class="line">inotifywait -mrq --timefmt <span class="string">'%d/%m/%y/%H:%M'</span> --format <span class="string">'%T %w %f'</span> <span class="operator">-e</span> modify,delete,create,attrib 目录 | <span class="keyword">while</span> <span class="built_in">read</span>  event</div><div class="line"></div><div class="line"><span class="keyword">do</span></div><div class="line">   ./DepHexo.sh</div><div class="line"><span class="keyword">done</span></div><div class="line">     </div><div class="line">hexo clean & hexo g</div></pre></td></tr></table></figure>
+
+<p>剩下的就不用多说了。</p>
+<p>PS: 使用nvm记得设定默认版本 <code>nvm alias default + 版本号</code></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>现在一直在用MarkDown写东西。发现Hexo发布很麻烦，想办法改了下。</p>
+<p>使用Github可以参照<a href="http://wzpan.gitcafe.com/tools/koding_intro/" target="_blank" rel="exte]]>
+    </summary>
+    
+      <category term="Markdown" scheme="http://bearwo.com/tags/Markdown/"/>
+    
+      <category term="StackEdit" scheme="http://bearwo.com/tags/StackEdit/"/>
+    
+      <category term="Dropbox" scheme="http://bearwo.com/tags/Dropbox/"/>
+    
+      <category term="hexo" scheme="http://bearwo.com/categories/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://bearwo.com/2014/12/19/hello-world/"/>
+    <id>http://bearwo.com/2014/12/19/hello-world/</id>
+    <published>2014-12-19T07:59:29.000Z</published>
+    <updated>2014-12-19T07:59:29.000Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2>
+<h3 id="Create_a_new_post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+      <category term="Markdown" scheme="http://bearwo.com/tags/Markdown/"/>
+    
+      <category term="StackEdit" scheme="http://bearwo.com/tags/StackEdit/"/>
+    
+      <category term="hexo" scheme="http://bearwo.com/categories/hexo/"/>
+    
+  </entry>
+  
+</feed>
