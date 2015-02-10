@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://bearwo.com/"/>
-  <updated>2014-12-24T04:45:34.720Z</updated>
+  <updated>2015-02-10T08:28:57.284Z</updated>
   <id>http://bearwo.com/</id>
   
   <author>
@@ -16,10 +16,10 @@
   
   <entry>
     <title><![CDATA[Hexo 远程发布]]></title>
-    <link href="http://bearwo.com/2014/12/24/hexo%E8%BF%9C%E7%A8%8B%E5%8F%91%E5%B8%83/"/>
-    <id>http://bearwo.com/2014/12/24/hexo远程发布/</id>
-    <published>2014-12-24T02:53:36.000Z</published>
-    <updated>2014-12-19T10:32:21.000Z</updated>
+    <link href="http://bearwo.com/2015/02/10/hexo%E8%BF%9C%E7%A8%8B%E5%8F%91%E5%B8%83/"/>
+    <id>http://bearwo.com/2015/02/10/hexo远程发布/</id>
+    <published>2015-02-10T08:19:22.000Z</published>
+    <updated>2015-02-10T08:19:22.000Z</updated>
     <content type="html"><![CDATA[<p>现在一直在用MarkDown写东西。发现Hexo发布很麻烦，想办法改了下。</p>
 <p>使用Github可以参照<a href="http://wzpan.gitcafe.com/tools/koding_intro/" target="_blank" rel="external">利用 Koding 为静态博客搭建在线编辑环境</a></p>
 <p>我用的是<a href="https://www.linode.com/" target="_blank" rel="external">Linode</a>，只能换种方式了。<br>首先你需要个梯子。如果不考虑在线书写的话，Dropbox就可以满足需要了。</p>
@@ -54,39 +54,54 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <link href="http://bearwo.com/2014/12/19/hello-world/"/>
-    <id>http://bearwo.com/2014/12/19/hello-world/</id>
-    <published>2014-12-19T07:59:29.000Z</published>
-    <updated>2014-12-19T07:59:29.000Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+    <title><![CDATA[Linode搭建Terraria Service]]></title>
+    <link href="http://bearwo.com/2015/02/10/Terraria%20Service/"/>
+    <id>http://bearwo.com/2015/02/10/Terraria Service/</id>
+    <published>2015-02-10T07:53:35.000Z</published>
+    <updated>2015-02-10T08:28:34.000Z</updated>
+    <content type="html"><![CDATA[<p> 买了很久Linode的VPS,只部了个Shadowsocket FQ，有点浪费。正好康神也开始玩Terraria了。就自己搭个服务器和小伙伴么一起玩耍了。</p>
+<h1 id="步骤">步骤</h1>
+<h3 id="首先要有个游戏">首先要有个游戏</h3>
+<p><a href="http://store.steampowered.com/app/105600/" target="_blank" rel="external">Steam</a>上可以很方便买到，遇到打折可以十几块到手</p>
+<p>Terraria目前只有Win版，所有想要在Debian上运行需要两个工具</p>
+<h4 id="mono-complete">mono-complete</h4>
+<p>添加 GPG signing key</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.<span class="keyword">com</span> --recv-<span class="built_in">keys</span> <span class="number">3</span>FA7E0328081BFF6A14DA29AA6A19B38D3D831EF</div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>添加 package repository</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"deb http://download.mono-project.com/repo/debian wheezy main"</span> | sudo tee /etc/apt/sources.<span class="keyword">list</span>.<span class="keyword">d</span>/mono-xamarin.<span class="keyword">list</span></div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>最后</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">sudo apt-<span class="built_in">get</span> install mono-<span class="built_in">complete</span></div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<h4 id="TSHOCK">TSHOCK</h4>
+<p>建立个目录</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">     <span class="keyword">cd</span> ~/</div><div class="line">     <span class="built_in">mkdir</span> tshock</div><div class="line">     sudo chmod <span class="number">755</span> tshock</div><div class="line">     <span class="keyword">cd</span> tshock</div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<p>下载</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">wget [link <span class="keyword">to</span> <span class="keyword">version</span> you want <span class="keyword">to</span> download]</div><div class="line">     unzip TShock\ [filename].zip</div><div class="line">     rm TShock\ [filename].zip</div></pre></td></tr></table></figure>
+
+<p>在<a href="https://github.com/NyxStudios/TShock/releases" target="_blank" rel="external">这里</a>找到最新的下载地址</p>
+<p>最后</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line"> <span class="keyword">cd</span> /tshock</div><div class="line"> screen mono TerrariaServer.<span class="keyword">exe</span></div></pre></td></tr></table></figure>
+
+<p>按照提示选择下地图和端口之类。</p>
+<h2 id="大功告成">大功告成</h2>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    <![CDATA[<p> 买了很久Linode的VPS,只部了个Shadowsocket FQ，有点浪费。正好康神也开始玩Terraria了。就自己搭个服务器和小伙伴么一起玩耍了。</p>
+<h1 id="步骤">步骤</h1>
+<h3 id="首先要有个游戏">首先要有个游戏</h3>
+<p><]]>
     </summary>
     
-      <category term="Markdown" scheme="http://bearwo.com/tags/Markdown/"/>
+      <category term="Gmaes" scheme="http://bearwo.com/tags/Gmaes/"/>
     
-      <category term="StackEdit" scheme="http://bearwo.com/tags/StackEdit/"/>
+      <category term="SandBox" scheme="http://bearwo.com/tags/SandBox/"/>
     
-      <category term="hexo" scheme="http://bearwo.com/categories/hexo/"/>
+      <category term="Terraria" scheme="http://bearwo.com/tags/Terraria/"/>
+    
+      <category term="Terraria" scheme="http://bearwo.com/categories/Terraria/"/>
     
   </entry>
   

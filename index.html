@@ -65,8 +65,8 @@
     <article id="post-hexo远程发布" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
-			<a href="/2014/12/24/hexo远程发布/" class="article-date">
-  <time datetime="2014-12-24T02:53:36.000Z" itemprop="datePublished">12月 24 2014</time>
+			<a href="/2015/02/10/hexo远程发布/" class="article-date">
+  <time datetime="2015-02-10T08:19:22.000Z" itemprop="datePublished">2月 10 2015</time>
 </a>
 		</span>
 		<span class="meta-elements author">lingjun.xiong</span>
@@ -79,7 +79,7 @@
 		
   
     <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2014/12/24/hexo远程发布/">Hexo 远程发布</a>
+      <a class="article-title" href="/2015/02/10/hexo远程发布/">Hexo 远程发布</a>
     </h1>
   
 
@@ -109,11 +109,11 @@
 	
 		<div style="float: right;margin-top: 3em;">
 			
-			<a data-url="http://bearwo.com/2014/12/24/hexo远程发布/" data-id="bw8tfu6vtxkaescz" class="article-share-link" data-share="baidu">分享到</a>
+			<a data-url="http://bearwo.com/2015/02/10/hexo远程发布/" data-id="mrcpcbiwua1yf5n8" class="article-share-link" data-share="baidu">分享到</a>
 			
 
 			
-			<a href="http://bearwo.com/2014/12/24/hexo远程发布/#ds-thread" class="article-comment-link">评论</a>
+			<a href="http://bearwo.com/2015/02/10/hexo远程发布/#ds-thread" class="article-comment-link">评论</a>
 			
 		</div>
 	
@@ -143,11 +143,11 @@
 
 
   
-    <article id="post-hello-world" class="post">
+    <article id="post-Terraria Service" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
-			<a href="/2014/12/19/hello-world/" class="article-date">
-  <time datetime="2014-12-19T07:59:29.000Z" itemprop="datePublished">12月 19 2014</time>
+			<a href="/2015/02/10/Terraria Service/" class="article-date">
+  <time datetime="2015-02-10T07:53:35.000Z" itemprop="datePublished">2月 10 2015</time>
 </a>
 		</span>
 		<span class="meta-elements author">lingjun.xiong</span>
@@ -160,42 +160,52 @@
 		
   
     <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2014/12/19/hello-world/">Hello World</a>
+      <a class="article-title" href="/2015/02/10/Terraria Service/">Linode搭建Terraria Service</a>
     </h1>
   
 
 	</header>
 	<div class="entry-content">
 		
-    	<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+    	<p> 买了很久Linode的VPS,只部了个Shadowsocket FQ，有点浪费。正好康神也开始玩Terraria了。就自己搭个服务器和小伙伴么一起玩耍了。</p>
+<h1 id="步骤">步骤</h1>
+<h3 id="首先要有个游戏">首先要有个游戏</h3>
+<p><a href="http://store.steampowered.com/app/105600/" target="_blank" rel="external">Steam</a>上可以很方便买到，遇到打折可以十几块到手</p>
+<p>Terraria目前只有Win版，所有想要在Debian上运行需要两个工具</p>
+<h4 id="mono-complete">mono-complete</h4>
+<p>添加 GPG signing key</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.<span class="keyword">com</span> --recv-<span class="built_in">keys</span> <span class="number">3</span>FA7E0328081BFF6A14DA29AA6A19B38D3D831EF</div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>添加 package repository</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"deb http://download.mono-project.com/repo/debian wheezy main"</span> | sudo tee /etc/apt/sources.<span class="keyword">list</span>.<span class="keyword">d</span>/mono-xamarin.<span class="keyword">list</span></div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>最后</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">sudo apt-<span class="built_in">get</span> install mono-<span class="built_in">complete</span></div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<h4 id="TSHOCK">TSHOCK</h4>
+<p>建立个目录</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">     <span class="keyword">cd</span> ~/</div><div class="line">     <span class="built_in">mkdir</span> tshock</div><div class="line">     sudo chmod <span class="number">755</span> tshock</div><div class="line">     <span class="keyword">cd</span> tshock</div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<p>下载</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">wget [link <span class="keyword">to</span> <span class="keyword">version</span> you want <span class="keyword">to</span> download]</div><div class="line">     unzip TShock\ [filename].zip</div><div class="line">     rm TShock\ [filename].zip</div></pre></td></tr></table></figure>
+
+<p>在<a href="https://github.com/NyxStudios/TShock/releases" target="_blank" rel="external">这里</a>找到最新的下载地址</p>
+<p>最后</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line"> <span class="keyword">cd</span> /tshock</div><div class="line"> screen mono TerrariaServer.<span class="keyword">exe</span></div></pre></td></tr></table></figure>
+
+<p>按照提示选择下地图和端口之类。</p>
+<h2 id="大功告成">大功告成</h2>
 
     
 	</div>
 	
 		<div style="float: right;margin-top: 3em;">
 			
-			<a data-url="http://bearwo.com/2014/12/19/hello-world/" data-id="arwlo031e4r3jjpm" class="article-share-link" data-share="baidu">分享到</a>
+			<a data-url="http://bearwo.com/2015/02/10/Terraria Service/" data-id="01sufihns50nswdp" class="article-share-link" data-share="baidu">分享到</a>
 			
 
 			
-			<a href="http://bearwo.com/2014/12/19/hello-world/#ds-thread" class="article-comment-link">评论</a>
+			<a href="http://bearwo.com/2015/02/10/Terraria Service/#ds-thread" class="article-comment-link">评论</a>
 			
 		</div>
 	
@@ -204,13 +214,13 @@
 			<span class="category">
 				
   <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+    <a class="article-category-link" href="/categories/Terraria/">Terraria</a>
   </div>
 
 			</span>
 			<span class="tags">
 				
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StackEdit/">StackEdit</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gmaes/">Gmaes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SandBox/">SandBox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Terraria/">Terraria</a></li></ul>
 
 			</span>
 		</div>
@@ -235,7 +245,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Terraria/">Terraria</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -244,7 +254,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dropbox/">Dropbox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StackEdit/">StackEdit</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dropbox/">Dropbox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gmaes/">Gmaes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SandBox/">SandBox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StackEdit/">StackEdit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terraria/">Terraria</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -253,7 +263,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dropbox/" style="font-size: 10.00px;">Dropbox</a><a href="/tags/Markdown/" style="font-size: 20.00px;">Markdown</a><a href="/tags/StackEdit/" style="font-size: 20.00px;">StackEdit</a>
+      <a href="/tags/Dropbox/" style="font-size: NaNpx;">Dropbox</a><a href="/tags/Gmaes/" style="font-size: NaNpx;">Gmaes</a><a href="/tags/Markdown/" style="font-size: NaNpx;">Markdown</a><a href="/tags/SandBox/" style="font-size: NaNpx;">SandBox</a><a href="/tags/StackEdit/" style="font-size: NaNpx;">StackEdit</a><a href="/tags/Terraria/" style="font-size: NaNpx;">Terraria</a>
     </div>
   </div>
 
@@ -262,7 +272,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -274,11 +284,11 @@
       <ul>
         
           <li>
-            <a href="/2014/12/24/hexo远程发布/">Hexo 远程发布</a>
+            <a href="/2015/02/10/hexo远程发布/">Hexo 远程发布</a>
           </li>
         
           <li>
-            <a href="/2014/12/19/hello-world/">Hello World</a>
+            <a href="/2015/02/10/Terraria Service/">Linode搭建Terraria Service</a>
           </li>
         
       </ul>
@@ -300,7 +310,7 @@
 		<a href="/">熊窝</a>
 	</h1>
 	<span class="copyright">
-		&copy; 2014 lingjun.xiong<br>
+		&copy; 2015 lingjun.xiong<br>
 		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme<br>
 		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
 	</span>
