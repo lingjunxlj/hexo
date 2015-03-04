@@ -3,38 +3,41 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Linode搭建Terraria Service | 熊窝</title>
+  <title>搭建Minecraft Service | 熊窝</title>
   <meta name="viewport" content="width=device-width">
-  <meta name="description" content="买了很久Linode的VPS,只部了个Shadowsocket FQ，有点浪费。正好康神也开始玩Terraria了。就自己搭个服务器和小伙伴么一起玩耍了。
+  <meta name="description" content="Linode 上搭建Minecraft比较简单，只需要一个JRE和服务器Jar包就可以
+JRE
+我用的自带的OpenJDK，想换Orace Java也行。实在懒得折腾
 步骤
-首先要有个游戏
-Steam上可以很方便买到，遇到打折可以十几块到手
-Terraria目前只有Win版，所有想要在Debian上运行需要两个工具
-mono-complete
-添加 GPG signing key
-12sudo apt-ke">
+创建个service的用户
+123adduser minecraftsu minecraftcd
+
+下载 Minecraft 服务器Jar包
+12345//1.7.2wget https://s3.amazonaws.com/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linode搭建Terraria Service">
-<meta property="og:url" content="http://bearwo.com/2015/02/10/Terraria Service/">
+<meta property="og:title" content="搭建Minecraft Service">
+<meta property="og:url" content="http://bearwo.com/2015/02/08/Minecraft/">
 <meta property="og:site_name" content="熊窝">
-<meta property="og:description" content="买了很久Linode的VPS,只部了个Shadowsocket FQ，有点浪费。正好康神也开始玩Terraria了。就自己搭个服务器和小伙伴么一起玩耍了。
+<meta property="og:description" content="Linode 上搭建Minecraft比较简单，只需要一个JRE和服务器Jar包就可以
+JRE
+我用的自带的OpenJDK，想换Orace Java也行。实在懒得折腾
 步骤
-首先要有个游戏
-Steam上可以很方便买到，遇到打折可以十几块到手
-Terraria目前只有Win版，所有想要在Debian上运行需要两个工具
-mono-complete
-添加 GPG signing key
-12sudo apt-ke">
+创建个service的用户
+123adduser minecraftsu minecraftcd
+
+下载 Minecraft 服务器Jar包
+12345//1.7.2wget https://s3.amazonaws.com/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linode搭建Terraria Service">
-<meta name="twitter:description" content="买了很久Linode的VPS,只部了个Shadowsocket FQ，有点浪费。正好康神也开始玩Terraria了。就自己搭个服务器和小伙伴么一起玩耍了。
+<meta name="twitter:title" content="搭建Minecraft Service">
+<meta name="twitter:description" content="Linode 上搭建Minecraft比较简单，只需要一个JRE和服务器Jar包就可以
+JRE
+我用的自带的OpenJDK，想换Orace Java也行。实在懒得折腾
 步骤
-首先要有个游戏
-Steam上可以很方便买到，遇到打折可以十几块到手
-Terraria目前只有Win版，所有想要在Debian上运行需要两个工具
-mono-complete
-添加 GPG signing key
-12sudo apt-ke">
+创建个service的用户
+123adduser minecraftsu minecraftcd
+
+下载 Minecraft 服务器Jar包
+12345//1.7.2wget https://s3.amazonaws.com/">
 
   
     <link rel="alternative" href="/atom.xml" title="熊窝" type="application/atom+xml">
@@ -81,11 +84,11 @@ mono-complete
 </header>
     <div class="outer">
       <div id="main">
-        <article id="post-Terraria Service" class="post">
+        <article id="post-Minecraft" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
-			<a href="/2015/02/10/Terraria Service/" class="article-date">
-  <time datetime="2015-02-10T07:53:35.000Z" itemprop="datePublished">2月 10 2015</time>
+			<a href="/2015/02/08/Minecraft/" class="article-date">
+  <time datetime="2015-02-08T11:53:26.000Z" itemprop="datePublished">2月 8 2015</time>
 </a>
 		</span>
 		<span class="meta-elements author">lingjun.xiong</span>
@@ -98,41 +101,30 @@ mono-complete
 		
   
     <h1 class="article-title entry-title" itemprop="name">
-      Linode搭建Terraria Service
+      搭建Minecraft Service
     </h1>
   
 
 	</header>
 	<div class="entry-content">
 		
-    	<p> 买了很久Linode的VPS,只部了个Shadowsocket FQ，有点浪费。正好康神也开始玩Terraria了。就自己搭个服务器和小伙伴么一起玩耍了。</p>
-<h1 id="步骤">步骤</h1>
-<h3 id="首先要有个游戏">首先要有个游戏</h3>
-<p><a href="http://store.steampowered.com/app/105600/" target="_blank" rel="external">Steam</a>上可以很方便买到，遇到打折可以十几块到手</p>
-<p>Terraria目前只有Win版，所有想要在Debian上运行需要两个工具</p>
-<h4 id="mono-complete">mono-complete</h4>
-<p>添加 GPG signing key</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.<span class="keyword">com</span> </div><div class="line">--recv-<span class="built_in">keys</span> <span class="number">3</span>FA7E0328081BFF6A14DA29AA6A19B38D3D831EF</div></pre></td></tr></table></figure>
+    	<p>Linode 上搭建Minecraft比较简单，只需要一个JRE和服务器Jar包就可以</p>
+<h3 id="JRE">JRE</h3>
+<p>我用的自带的OpenJDK，想换Orace Java也行。实在懒得折腾</p>
+<h3 id="步骤">步骤</h3>
+<h5 id="创建个service的用户">创建个service的用户</h5>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adduser minecraft</div><div class="line">su minecraft</div><div class="line"><span class="built_in">cd</span></div></pre></td></tr></table></figure>
 
-<p>添加 package repository</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">echo</span> <span class="string">"deb http://download.mono-project.com/repo/debian </span></div><div class="line">wheezy main" | sudo tee /etc/apt/sources.<span class="keyword">list</span>.<span class="keyword">d</span>/mono-xamarin.<span class="keyword">list</span></div></pre></td></tr></table></figure>
+<h5 id="下载_Minecraft_服务器Jar包">下载 <a href="https://minecraft.net/download" target="_blank" rel="external">Minecraft</a> 服务器Jar包</h5>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.7.2</span></div><div class="line">wget https:<span class="comment">//s3.amazonaws.com/Minecraft.Download/versions/1.7.2/minecraft_server.1.7.2.jar</span></div><div class="line"></div><div class="line"><span class="comment">//1.8.1</span></div><div class="line">https:<span class="comment">//s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar</span></div></pre></td></tr></table></figure>
 
-<p>最后</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">sudo apt-<span class="built_in">get</span> install mono-<span class="built_in">complete</span></div></pre></td></tr></table></figure>
+<p>如果需要更老的包可以按着这个规则自己下载</p>
+<h4 id="创建执行脚本">创建执行脚本</h4>
+<p>/home/minecraft/run.sh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#!/bin/sh</span></div><div class="line">BINDIR=$(dirname <span class="string">"<span class="variable">$(readlink -fn "$0")</span>"</span>)</div><div class="line"><span class="built_in">cd</span> <span class="string">"<span class="variable">$BINDIR</span>"</span></div><div class="line"></div><div class="line">java -Xms512M -Xmx1000M -jar minecraft_server.<span class="number">1.7</span>.<span class="number">2</span>.jar -o <span class="literal">true</span></div><div class="line"></div><div class="line">//接下来</div><div class="line">chmod +x run.sh</div><div class="line"><span class="keyword">exit</span></div><div class="line">screen -S minecraft</div><div class="line"></div><div class="line">//继续</div><div class="line">su minecraft</div><div class="line">./run.sh</div></pre></td></tr></table></figure>
 
-<h4 id="TSHOCK">TSHOCK</h4>
-<p>建立个目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/</div><div class="line">mkdir tshock</div><div class="line"><span class="built_in">sudo</span> chmod <span class="number">755</span> tshock</div><div class="line"><span class="built_in">cd</span> tshock</div></pre></td></tr></table></figure>
-
-<p>下载</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget [link <span class="keyword">to</span> <span class="keyword">version</span> you want <span class="keyword">to</span> download]</div><div class="line">     unzip TShock\ [filename].zip</div><div class="line">     rm TShock\ [filename].zip</div></pre></td></tr></table></figure>
-
-<p>在<a href="https://github.com/NyxStudios/TShock/releases" target="_blank" rel="external">这里</a>找到最新的下载地址</p>
-<p>最后</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> /tshock</div><div class="line">screen mono TerrariaServer.<span class="keyword">exe</span></div></pre></td></tr></table></figure>
-
-<p>按照提示选择下地图和端口之类。</p>
-<h2 id="大功告成!">大功告成!</h2>
+<h1 id="完成！！">完成！！</h1>
+<p>注意防范熊孩子。。。。</p>
 
     
 	</div>
@@ -142,7 +134,7 @@ mono-complete
 			<span class="category">
 				
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Terraria/">Terraria</a>
+    <a class="article-category-link" href="/categories/Minecraft/">Minecraft</a>
   </div>
 
 			</span>
@@ -168,11 +160,11 @@ mono-complete
 			</div>
 			<div style="float: right;margin-top: 3em">
 				
-					<a data-url="http://bearwo.com/2015/02/10/Terraria Service/" data-id="g96a9fp8mm67rqin" class="article-share-link" data-share="baidu">分享到</a>
+					<a data-url="http://bearwo.com/2015/02/08/Minecraft/" data-id="532l31mapniqd3vr" class="article-share-link" data-share="baidu">分享到</a>
 				
 
 				<!---->
-					<!--<a href="http://bearwo.com/2015/02/10/Terraria Service/#ds-thread" class="article-comment-link">评论</a>-->
+					<!--<a href="http://bearwo.com/2015/02/08/Minecraft/#ds-thread" class="article-comment-link">评论</a>-->
 				<!---->
 			</div>
 	    </footer>
@@ -181,21 +173,21 @@ mono-complete
     	
 <nav id="article-nav">
   
-    <a href="/2015/03/04/vim-tmux/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/02/10/Terraria Service/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          (no title)
+          Linode搭建Terraria Service
         
       </div>
     </a>
   
   
-    <a href="/2015/02/08/Minecraft/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/11/10/hexo远程发布/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">
         
-          搭建Minecraft Service
+          Hexo 远程发布
         
       </div>
     </a>
@@ -209,7 +201,7 @@ mono-complete
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/02/10/Terraria Service/" data-title="Linode搭建Terraria Service" data-url="http://bearwo.com/2015/02/10/Terraria Service/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/02/08/Minecraft/" data-title="搭建Minecraft Service" data-url="http://bearwo.com/2015/02/08/Minecraft/"></div>
   </section>
 
       </div>

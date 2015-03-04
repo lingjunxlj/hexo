@@ -256,7 +256,7 @@ code {
 }
 figure.highlight {
   background: color-code;
-  border: 1px solid #ddd;
+/*border 1px solid color-border*/
   margin: 0;
   padding: 7px 15px;
   -webkit-border-radius: 2px;

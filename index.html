@@ -62,11 +62,11 @@
       <div id="main">
         
   
-    <article id="post-hexo远程发布" class="post">
+    <article id="post-vim-tmux" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
-			<a href="/2015/02/10/hexo远程发布/" class="article-date">
-  <time datetime="2015-02-10T08:19:22.000Z" itemprop="datePublished">2月 10 2015</time>
+			<a href="/2015/03/04/vim-tmux/" class="article-date">
+  <time datetime="2015-03-04T07:50:20.000Z" itemprop="datePublished">3月 4 2015</time>
 </a>
 		</span>
 		<span class="meta-elements author">lingjun.xiong</span>
@@ -77,43 +77,75 @@
 	
 	<header class="entry-header">
 		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/02/10/hexo远程发布/">Hexo 远程发布</a>
-    </h1>
-  
-
 	</header>
 	<div class="entry-content">
 		
-    	<p>现在一直在用MarkDown写东西。发现Hexo发布很麻烦，想办法改了下。</p>
-<p>使用Github可以参照<a href="http://wzpan.gitcafe.com/tools/koding_intro/" target="_blank" rel="external">利用 Koding 为静态博客搭建在线编辑环境</a></p>
-<p>我用的是<a href="https://www.linode.com/" target="_blank" rel="external">Linode</a>，只能换种方式了。<br>首先你需要个梯子。如果不考虑在线书写的话，Dropbox就可以满足需要了。</p>
-<p>在线：</p>
+    	<p>title: vim tmux备忘<br>comments: true<br>date: 2015-03-04 14:46:37<br>tags:[Vim, Linux, tmux]<br>categories: vim</p>
+<hr>
+<h2 id="vim">vim</h2>
+<p>最近Github上 <a href="https://github.com/jez/vim-as-an-ide" target="_blank" rel="external">ez/vim-as-an-ide</a>很火，试用了下配置，确实不错。</p>
+<p>每个配置都有详细的讲解，相当的强大。</p>
+<p>便捷懒人们，以下是快捷教程</p>
 <ul>
-<li>推荐<a href="https://stackedit.io/" target="_blank" rel="external">StackEdit</a>，支持网盘。</li>
-<li>使用<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">incron</a> 或者 <a href="https://github.com/rvoicilas/inotify-tools/wiki" target="_blank" rel="external">inotify-tool</a>，让文件改变时执行脚本。</li>
+<li><p>下载<a href="https://raw.githubusercontent.com/jez/vim-as-an-ide/master/vimrc.vim" target="_blank" rel="external">配置文件</a>，内容copy到~/.vimrc。</p>
+</li>
+<li><p>下载<a href="https://github.com/gmarik/Vundle.vim" target="_blank" rel="external">Vundle</a>,复制到~/.vim/bundle/Vundle.vim 或者</p>
+</li>
 </ul>
-<h4 id="inotify-tool">inotify-tool</h4>
-<p>安装：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-<span class="keyword">get</span> install inotify-tools</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/gmarik/Vundle.<span class="keyword">vim</span> ~/.<span class="keyword">vim</span>/bundle/Vundle.<span class="keyword">vim</span></div></pre></td></tr></table></figure>
 
-<p>配置：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#!/bin/sh</span></div><div class="line"><span class="comment">#nohup /bin/bash /root/stackEdit.sh &gt; /dev/null 2&gt;&1 &</span></div><div class="line">  </div><div class="line">inotifywait -mrq --timefmt <span class="string">'%d/%m/%y/%H:%M'</span> --format <span class="string">'%T %w %f'</span> <span class="operator">-e</span> modify,delete,create,attrib 目录 | <span class="keyword">while</span> <span class="built_in">read</span>  event</div><div class="line"></div><div class="line"><span class="keyword">do</span></div><div class="line">   ./DepHexo.sh</div><div class="line"><span class="keyword">done</span></div><div class="line">     </div><div class="line">hexo clean & hexo g</div></pre></td></tr></table></figure>
+<ul>
+<li>进入vim， :PluginInstall， 大功告成</li>
+</ul>
+<p>PS： 使用vim打开man请在 ~/.bashrc 中添加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vman() { </div><div class="line">	vim -c <span class="string">"SuperMan $*"</span> </div><div class="line">	</div><div class="line">	if [ <span class="string">"$?"</span> != <span class="string">"0"</span> ]; then 		</div><div class="line">		echo <span class="string">"No manual 	entry for $*"</span> </div><div class="line">	fi }</div></pre></td></tr></table></figure>
 
-<p>剩下的就不用多说了。</p>
-<p>PS: 使用nvm记得设定默认版本 <code>nvm alias default + 版本号</code></p>
+<p>mac用户别忘了在/etc/profile添加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> [ <span class="operator">-f</span> ~/.bashrc ] ; <span class="keyword">then</span></div><div class="line">. .bashrc</div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
+
+<p>记得source 。。。。</p>
+<h2 id="tmux">tmux</h2>
+<p>vim里用到了<a href="https://github.com/christoomey/vim-tmux-navigator" target="_blank" rel="external">vim-tmux-navigator</a>，顺道记录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew <span class="operator"><span class="keyword">install</span> tmux</span></div></pre></td></tr></table></figure>
+
+<p>常用按键</p>
+<ul>
+<li>C-b ? 显示快捷键帮助</li>
+<li>C-b C-o 调换窗口位置，类似与vim 里的C-w</li>
+<li>C-b 空格键 采用下一个内置布局</li>
+<li>C-b ! 把当前窗口变为新窗口</li>
+<li>C-b “ 模向分隔窗口</li>
+<li>C-b % 纵向分隔窗口</li>
+<li>C-b q 显示分隔窗口的编号</li>
+<li>C-b o 跳到下一个分隔窗口</li>
+<li>C-b 上下键 上一个及下一个分隔窗口</li>
+<li>C-b C-方向键 调整分隔窗口大小</li>
+<li>C-b c 创建新窗口</li>
+<li>C-b 0~9 选择几号窗口</li>
+<li>C-b c 创建新窗口</li>
+<li>C-b n 选择下一个窗口</li>
+<li>C-b l 切换到最后使用的窗口</li>
+<li>C-b p 选择前一个窗口</li>
+<li>C-b w 以菜单方式显示及选择窗口</li>
+<li>C-b t 显示时钟</li>
+<li>C-b ; 切换到最后一个使用的面板</li>
+<li>C-b x 关闭面板</li>
+<li>C-b &amp; 关闭窗口</li>
+<li>C-b s 以菜单方式显示和选择会话</li>
+<li>C-b d 退出tumx，并保存当前会话，这时，tmux仍在后台运行，可以通过tmux attach进入 到指定的会话</li>
+</ul>
+<p>tmux也提供外部命令，vman tmux之，写成shell脚本配合<a href="http://fitztrev.github.io/shuttle/" target="_blank" rel="external">shuttle</a>有神器效果哟</p>
 
     
 	</div>
 	
 		<div style="float: right;margin-top: 3em;">
 			
-			<a data-url="http://bearwo.com/2015/02/10/hexo远程发布/" data-id="mrcpcbiwua1yf5n8" class="article-share-link" data-share="baidu">分享到</a>
+			<a data-url="http://bearwo.com/2015/03/04/vim-tmux/" data-id="2imc7sawhfc4pvm2" class="article-share-link" data-share="baidu">分享到</a>
 			
 
 			
-			<a href="http://bearwo.com/2015/02/10/hexo远程发布/#ds-thread" class="article-comment-link">评论</a>
+			<a href="http://bearwo.com/2015/03/04/vim-tmux/#ds-thread" class="article-comment-link">评论</a>
 			
 		</div>
 	
@@ -121,15 +153,9 @@
 		<div class="entry-meta-footer">
 			<span class="category">
 				
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-  </div>
-
 			</span>
 			<span class="tags">
 				
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dropbox/">Dropbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StackEdit/">StackEdit</a></li></ul>
-
 			</span>
 		</div>
 	</footer>
@@ -174,34 +200,34 @@
 <p>Terraria目前只有Win版，所有想要在Debian上运行需要两个工具</p>
 <h4 id="mono-complete">mono-complete</h4>
 <p>添加 GPG signing key</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.<span class="keyword">com</span> --recv-<span class="built_in">keys</span> <span class="number">3</span>FA7E0328081BFF6A14DA29AA6A19B38D3D831EF</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.<span class="keyword">com</span> </div><div class="line">--recv-<span class="built_in">keys</span> <span class="number">3</span>FA7E0328081BFF6A14DA29AA6A19B38D3D831EF</div></pre></td></tr></table></figure>
 
 <p>添加 package repository</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"deb http://download.mono-project.com/repo/debian wheezy main"</span> | sudo tee /etc/apt/sources.<span class="keyword">list</span>.<span class="keyword">d</span>/mono-xamarin.<span class="keyword">list</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">echo</span> <span class="string">"deb http://download.mono-project.com/repo/debian </span></div><div class="line">wheezy main" | sudo tee /etc/apt/sources.<span class="keyword">list</span>.<span class="keyword">d</span>/mono-xamarin.<span class="keyword">list</span></div></pre></td></tr></table></figure>
 
 <p>最后</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">sudo apt-<span class="built_in">get</span> install mono-<span class="built_in">complete</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">sudo apt-<span class="built_in">get</span> install mono-<span class="built_in">complete</span></div></pre></td></tr></table></figure>
 
 <h4 id="TSHOCK">TSHOCK</h4>
 <p>建立个目录</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">     <span class="keyword">cd</span> ~/</div><div class="line">     <span class="built_in">mkdir</span> tshock</div><div class="line">     sudo chmod <span class="number">755</span> tshock</div><div class="line">     <span class="keyword">cd</span> tshock</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/</div><div class="line">mkdir tshock</div><div class="line"><span class="built_in">sudo</span> chmod <span class="number">755</span> tshock</div><div class="line"><span class="built_in">cd</span> tshock</div></pre></td></tr></table></figure>
 
 <p>下载</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line">wget [link <span class="keyword">to</span> <span class="keyword">version</span> you want <span class="keyword">to</span> download]</div><div class="line">     unzip TShock\ [filename].zip</div><div class="line">     rm TShock\ [filename].zip</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget [link <span class="keyword">to</span> <span class="keyword">version</span> you want <span class="keyword">to</span> download]</div><div class="line">     unzip TShock\ [filename].zip</div><div class="line">     rm TShock\ [filename].zip</div></pre></td></tr></table></figure>
 
 <p>在<a href="https://github.com/NyxStudios/TShock/releases" target="_blank" rel="external">这里</a>找到最新的下载地址</p>
 <p>最后</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">shell</span></div><div class="line"> <span class="keyword">cd</span> /tshock</div><div class="line"> screen mono TerrariaServer.<span class="keyword">exe</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> /tshock</div><div class="line">screen mono TerrariaServer.<span class="keyword">exe</span></div></pre></td></tr></table></figure>
 
 <p>按照提示选择下地图和端口之类。</p>
-<h2 id="大功告成">大功告成</h2>
+<h2 id="大功告成!">大功告成!</h2>
 
     
 	</div>
 	
 		<div style="float: right;margin-top: 3em;">
 			
-			<a data-url="http://bearwo.com/2015/02/10/Terraria Service/" data-id="01sufihns50nswdp" class="article-share-link" data-share="baidu">分享到</a>
+			<a data-url="http://bearwo.com/2015/02/10/Terraria Service/" data-id="g96a9fp8mm67rqin" class="article-share-link" data-share="baidu">分享到</a>
 			
 
 			
@@ -235,6 +261,168 @@
 
 
   
+    <article id="post-Minecraft" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/02/08/Minecraft/" class="article-date">
+  <time datetime="2015-02-08T11:53:26.000Z" itemprop="datePublished">2月 8 2015</time>
+</a>
+		</span>
+		<span class="meta-elements author">lingjun.xiong</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/02/08/Minecraft/">搭建Minecraft Service</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>Linode 上搭建Minecraft比较简单，只需要一个JRE和服务器Jar包就可以</p>
+<h3 id="JRE">JRE</h3>
+<p>我用的自带的OpenJDK，想换Orace Java也行。实在懒得折腾</p>
+<h3 id="步骤">步骤</h3>
+<h5 id="创建个service的用户">创建个service的用户</h5>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adduser minecraft</div><div class="line">su minecraft</div><div class="line"><span class="built_in">cd</span></div></pre></td></tr></table></figure>
+
+<h5 id="下载_Minecraft_服务器Jar包">下载 <a href="https://minecraft.net/download" target="_blank" rel="external">Minecraft</a> 服务器Jar包</h5>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.7.2</span></div><div class="line">wget https:<span class="comment">//s3.amazonaws.com/Minecraft.Download/versions/1.7.2/minecraft_server.1.7.2.jar</span></div><div class="line"></div><div class="line"><span class="comment">//1.8.1</span></div><div class="line">https:<span class="comment">//s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar</span></div></pre></td></tr></table></figure>
+
+<p>如果需要更老的包可以按着这个规则自己下载</p>
+<h4 id="创建执行脚本">创建执行脚本</h4>
+<p>/home/minecraft/run.sh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#!/bin/sh</span></div><div class="line">BINDIR=$(dirname <span class="string">"<span class="variable">$(readlink -fn "$0")</span>"</span>)</div><div class="line"><span class="built_in">cd</span> <span class="string">"<span class="variable">$BINDIR</span>"</span></div><div class="line"></div><div class="line">java -Xms512M -Xmx1000M -jar minecraft_server.<span class="number">1.7</span>.<span class="number">2</span>.jar -o <span class="literal">true</span></div><div class="line"></div><div class="line">//接下来</div><div class="line">chmod +x run.sh</div><div class="line"><span class="keyword">exit</span></div><div class="line">screen -S minecraft</div><div class="line"></div><div class="line">//继续</div><div class="line">su minecraft</div><div class="line">./run.sh</div></pre></td></tr></table></figure>
+
+<h1 id="完成！！">完成！！</h1>
+<p>注意防范熊孩子。。。。</p>
+
+    
+	</div>
+	
+		<div style="float: right;margin-top: 3em;">
+			
+			<a data-url="http://bearwo.com/2015/02/08/Minecraft/" data-id="532l31mapniqd3vr" class="article-share-link" data-share="baidu">分享到</a>
+			
+
+			
+			<a href="http://bearwo.com/2015/02/08/Minecraft/#ds-thread" class="article-comment-link">评论</a>
+			
+		</div>
+	
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Minecraft/">Minecraft</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gmaes/">Gmaes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SandBox/">SandBox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Terraria/">Terraria</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
+    <article id="post-hexo远程发布" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2014/11/10/hexo远程发布/" class="article-date">
+  <time datetime="2014-11-10T09:53:35.000Z" itemprop="datePublished">11月 10 2014</time>
+</a>
+		</span>
+		<span class="meta-elements author">lingjun.xiong</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2014/11/10/hexo远程发布/">Hexo 远程发布</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>现在一直在用MarkDown写东西。发现Hexo发布很麻烦，想办法改了下。</p>
+<p>使用Github可以参照<a href="http://wzpan.gitcafe.com/tools/koding_intro/" target="_blank" rel="external">利用 Koding 为静态博客搭建在线编辑环境</a></p>
+<p>我用的是<a href="https://www.linode.com/" target="_blank" rel="external">Linode</a>，只能换种方式了。<br>首先你需要个梯子。如果不考虑在线书写的话，Dropbox就可以满足需要了。</p>
+<p>在线：</p>
+<ul>
+<li>推荐<a href="https://stackedit.io/" target="_blank" rel="external">StackEdit</a>，支持网盘。</li>
+<li>使用<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">incron</a> 或者 <a href="https://github.com/rvoicilas/inotify-tools/wiki" target="_blank" rel="external">inotify-tool</a>，让文件改变时执行脚本。</li>
+</ul>
+<h4 id="inotify-tool">inotify-tool</h4>
+<p>安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-<span class="keyword">get</span> install inotify-tools</div></pre></td></tr></table></figure>
+
+<p>配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#!/bin/sh</span></div><div class="line"><span class="comment">#nohup /bin/bash /root/stackEdit.sh &gt; /dev/null 2&gt;&1 &</span></div><div class="line">  </div><div class="line">inotifywait -mrq --timefmt <span class="string">'%d/%m/%y/%H:%M'</span> --format <span class="string">'%T %w %f'</span> <span class="operator">-e</span> modify,delete,create,attrib 目录 | <span class="keyword">while</span> <span class="built_in">read</span>  event</div><div class="line"></div><div class="line"><span class="keyword">do</span></div><div class="line">   ./DepHexo.sh</div><div class="line"><span class="keyword">done</span></div><div class="line">     </div><div class="line">hexo clean & hexo g</div></pre></td></tr></table></figure>
+
+<p>剩下的就不用多说了。</p>
+<p>PS: 使用nvm记得设定默认版本 <code>nvm alias default + 版本号</code></p>
+
+    
+	</div>
+	
+		<div style="float: right;margin-top: 3em;">
+			
+			<a data-url="http://bearwo.com/2014/11/10/hexo远程发布/" data-id="676x2rzwiv81ig9e" class="article-share-link" data-share="baidu">分享到</a>
+			
+
+			
+			<a href="http://bearwo.com/2014/11/10/hexo远程发布/#ds-thread" class="article-comment-link">评论</a>
+			
+		</div>
+	
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dropbox/">Dropbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StackEdit/">StackEdit</a></li></ul>
+
+			</span>
+		</div>
+	</footer>
+	
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+  
   
 
       </div>
@@ -245,7 +433,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Terraria/">Terraria</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Minecraft/">Minecraft</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Terraria/">Terraria</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -254,7 +442,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dropbox/">Dropbox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gmaes/">Gmaes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SandBox/">SandBox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StackEdit/">StackEdit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terraria/">Terraria</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dropbox/">Dropbox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gmaes/">Gmaes</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SandBox/">SandBox</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StackEdit/">StackEdit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terraria/">Terraria</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -263,7 +451,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dropbox/" style="font-size: NaNpx;">Dropbox</a><a href="/tags/Gmaes/" style="font-size: NaNpx;">Gmaes</a><a href="/tags/Markdown/" style="font-size: NaNpx;">Markdown</a><a href="/tags/SandBox/" style="font-size: NaNpx;">SandBox</a><a href="/tags/StackEdit/" style="font-size: NaNpx;">StackEdit</a><a href="/tags/Terraria/" style="font-size: NaNpx;">Terraria</a>
+      <a href="/tags/Dropbox/" style="font-size: 10.00px;">Dropbox</a><a href="/tags/Gmaes/" style="font-size: 20.00px;">Gmaes</a><a href="/tags/Markdown/" style="font-size: 10.00px;">Markdown</a><a href="/tags/SandBox/" style="font-size: 20.00px;">SandBox</a><a href="/tags/StackEdit/" style="font-size: 10.00px;">StackEdit</a><a href="/tags/Terraria/" style="font-size: 20.00px;">Terraria</a>
     </div>
   </div>
 
@@ -272,7 +460,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -284,11 +472,19 @@
       <ul>
         
           <li>
-            <a href="/2015/02/10/hexo远程发布/">Hexo 远程发布</a>
+            <a href="/2015/03/04/vim-tmux/">(no title)</a>
           </li>
         
           <li>
             <a href="/2015/02/10/Terraria Service/">Linode搭建Terraria Service</a>
+          </li>
+        
+          <li>
+            <a href="/2015/02/08/Minecraft/">搭建Minecraft Service</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/10/hexo远程发布/">Hexo 远程发布</a>
           </li>
         
       </ul>
