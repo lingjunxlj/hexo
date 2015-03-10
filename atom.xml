@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://bearwo.com/"/>
-  <updated>2015-03-04T07:50:58.748Z</updated>
+  <updated>2015-03-10T08:40:14.105Z</updated>
   <id>http://bearwo.com/</id>
   
   <author>
@@ -15,14 +15,12 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[]]></title>
+    <title><![CDATA[vim tmux备忘]]></title>
     <link href="http://bearwo.com/2015/03/04/vim-tmux/"/>
     <id>http://bearwo.com/2015/03/04/vim-tmux/</id>
-    <published>2015-03-04T07:50:20.000Z</published>
-    <updated>2015-03-04T07:50:20.000Z</updated>
-    <content type="html"><![CDATA[<p>title: vim tmux备忘<br>comments: true<br>date: 2015-03-04 14:46:37<br>tags:[Vim, Linux, tmux]<br>categories: vim</p>
-<hr>
-<h2 id="vim">vim</h2>
+    <published>2015-03-04T06:46:37.000Z</published>
+    <updated>2015-03-04T08:03:58.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="vim">vim</h2>
 <p>最近Github上 <a href="https://github.com/jez/vim-as-an-ide" target="_blank" rel="external">ez/vim-as-an-ide</a>很火，试用了下配置，确实不错。</p>
 <p>每个配置都有详细的讲解，相当的强大。</p>
 <p>便捷懒人们，以下是快捷教程</p>
@@ -38,7 +36,7 @@
 <li>进入vim， :PluginInstall， 大功告成</li>
 </ul>
 <p>PS： 使用vim打开man请在 ~/.bashrc 中添加</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vman() { </div><div class="line">	vim -c <span class="string">"SuperMan $*"</span> </div><div class="line">	</div><div class="line">	if [ <span class="string">"$?"</span> != <span class="string">"0"</span> ]; then 		</div><div class="line">		echo <span class="string">"No manual 	entry for $*"</span> </div><div class="line">	fi }</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">vman</span></span>() {</div><div class="line">    vim -c <span class="string">"SuperMan $*"</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> [ <span class="string">"$?"</span> != <span class="string">"0"</span> ]; <span class="keyword">then</span></div><div class="line">        <span class="built_in">echo</span> <span class="string">"No manual 	entry for $*"</span></div><div class="line">    <span class="keyword">fi</span> }</div></pre></td></tr></table></figure>
 
 <p>mac用户别忘了在/etc/profile添加</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> [ <span class="operator">-f</span> ~/.bashrc ] ; <span class="keyword">then</span></div><div class="line">. .bashrc</div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
@@ -74,13 +72,20 @@
 <li>C-b s 以菜单方式显示和选择会话</li>
 <li>C-b d 退出tumx，并保存当前会话，这时，tmux仍在后台运行，可以通过tmux attach进入 到指定的会话</li>
 </ul>
-<p>tmux也提供外部命令，vman tmux之，写成shell脚本配合<a href="http://fitztrev.github.io/shuttle/" target="_blank" rel="external">shuttle</a>有神器效果哟</p>
+<p>tmux也提供外部命令，vman tmux之，写成shell脚本配合<a href="http://fitztrev.github.io/shuttle/" target="_blank" rel="external">shuttle</a>有神器效果哟<br>cd</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: vim tmux备忘<br>comments: true<br>date: 2015-03-04 14:46:37<br>tags:[Vim, Linux, tmux]<br>categories: vim</p>
-<hr>
-<h2 id="vim">vim<]]>
+    <![CDATA[<h2 id="vim">vim</h2>
+<p>最近Github上 <a href="https://github.com/jez/vim-as-an-ide" target="_blank" rel="external">ez/vim-as-an-ide</a>很火，试用了下]]>
     </summary>
+    
+      <category term="Vim" scheme="http://bearwo.com/tags/Vim/"/>
+    
+      <category term="Linux" scheme="http://bearwo.com/tags/Linux/"/>
+    
+      <category term="tmux" scheme="http://bearwo.com/tags/tmux/"/>
+    
+      <category term="vim" scheme="http://bearwo.com/categories/vim/"/>
     
   </entry>
   
